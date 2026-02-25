@@ -35,15 +35,15 @@ var lista_ventas = new List<Ventas>()
 
 //muesto la venta uno con todos sus ATRIBUTOS
 
+
 var venta = lista_ventas.FirstOrDefault(x => x.Id == 1);
 
 
-	var cliente = lista_clientes.FirstOrDefault(a => a.Id == venta.ClienteId);
-	var empleado = lista_empleados.FirstOrDefault(b => b.Id == venta.EmpleadoId);
-	var vehiculo = lista_vehiculos.FirstOrDefault(c => c.Id == venta.VehiculoId);
+	string? cliente	 = lista_clientes.FirstOrDefault(a => a.Id == venta.ClienteId).Nombre;
+	string? empleado = lista_empleados.FirstOrDefault(b => b.Id == venta.EmpleadoId).Nombre;
+	string? vehiculo = lista_vehiculos.FirstOrDefault(c => c.Id == venta.VehiculoId).Marca;
 
-	Console.WriteLine("El nombre del cliente es: " + cliente?.Nombre +", el empleado: " + empleado?.Nombre + " y se vendió un modelo: " + vehiculo?.Marca);
-
+	Console.WriteLine("El nombre del cliente es: " + cliente +", el empleado: " + empleado + " y se vendió un modelo: " + vehiculo);
 
 //  CLASES 
 
@@ -105,3 +105,4 @@ public class Ventas
 	public Vehiculos? Vehiculo { get; set; }
 	public Clientes? Cliente { get; set; }
 }
+
