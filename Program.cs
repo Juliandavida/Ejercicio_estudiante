@@ -35,10 +35,14 @@ var lista_ventas = new List<Ventas>()
 
 //muesto la venta uno con todos sus ATRIBUTOS
 
-var Nombre_Cliente = lista_ventas.FirstOrDefault(x => x.ClienteId == 1);
-var Nombre_Empleado = lista_ventas.FirstOrDefault(x => x.EmpleadoId == 1);
-var Nombre_modelo = lista_ventas.FirstOrDefault(x => x.VehiculoId == 1);
+var venta = lista_ventas.FirstOrDefault(x => x.Id == 1);
 
+
+	var cliente = lista_clientes.FirstOrDefault(a => a.Id == venta.ClienteId);
+	var empleado = lista_empleados.FirstOrDefault(b => b.Id == venta.EmpleadoId);
+	var vehiculo = lista_vehiculos.FirstOrDefault(c => c.Id == venta.VehiculoId);
+
+	Console.WriteLine("El nombre del cliente es: " + cliente?.Nombre +", el empleado: " + empleado?.Nombre + " y se vendió un modelo: " + vehiculo?.Marca);
 
 
 //  CLASES 
