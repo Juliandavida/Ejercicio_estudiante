@@ -1,60 +1,103 @@
 Console.WriteLine("Hello, World!");
+
+// LISTA VEHICULOS 
+
+var lista_vehiculos = new List<Vehiculos>()
+{
+	new Vehiculos { Id = 1, Marca = "Onix", Modelo = new DateTime(2020, 2, 24), Valor = 60000000m, Disponible = true },
+	new Vehiculos { Id = 2, Marca = "Logan", Modelo = new DateTime(2021, 5, 14), Valor = 40000000m, Disponible = false },
+	new Vehiculos { Id = 3, Marca = "Hilux", Modelo = new DateTime(2025, 12, 12), Valor = 120000000m, Disponible = true }
+};
+
+// LISTA CLIENTES 
+
+var lista_clientes = new List<Clientes>()
+{
+	new Clientes { Id = 1, Nombre = "Juan", Cedula = "123", FechaNacimiento = new DateTime(1995, 5, 10), Activo = true },
+	new Clientes { Id = 2, Nombre = "Carlos", Cedula = "456", FechaNacimiento = new DateTime(1990, 8, 20), Activo = true },
+	new Clientes { Id = 3, Nombre = "Jose", Cedula = "789", FechaNacimiento = new DateTime(1985, 3, 15), Activo = false }
+};
+
+// LISTA EMPLEADOS 
+
+var lista_empleados = new List<Empleados>()
+{
+	new Empleados { Id = 1, Nombre = "Dana", Cargo = "Asesora", Sueldo = 1000000m, Activo = true }
+};
+
+// LISTA VENTAS 
+
+var lista_ventas = new List<Ventas>()
+{
+	new Ventas{Id = 1,FechaVenta = DateTime.Now,Cancelado = false,ClienteId = 1,EmpleadoId = 1,VehiculoId = 1},
+	new Ventas{Id = 2,FechaVenta = DateTime.Now,Cancelado = true,ClienteId = 2,EmpleadoId = 1,VehiculoId = 3}
+};
+
+
+
+//  CLASES 
+
 public class Seguros
 {
 	public int Id { get; set; }
-	public string? Compañia { get; set; }
+	public string? Compania { get; set; }
 	public DateTime FechaSeguro { get; set; }
-	public bool Vencido { get; set; }
 
-	public Vehiculos? _Vehiculo { get; set; }
+	public int VehiculoId { get; set; }   // FK
+	public Vehiculos? Vehiculo { get; set; }
 }
+
+//muesto la venta uno con todos sus ATRIBUTOS
+
+	var Nombre_Cliente = lista_ventas.FirstOrDefault(x => x.ClienteId == 1);
+	var Nombre_Empleado = lista_ventas.FirstOrDefault(x => x.EmpleadoId == 1);
+	var Nombre_modelo = lista_ventas.FirstOrDefault(x => x.VehiculoId == 1);
+
+
 public class Empleados
 {
 	public int Id { get; set; }
-	public string? Cedula { get; set; }
+	public string? Cargo { get; set; }
 	public string? Nombre { get; set; }
-
-	public DateTime FechaNacimiento { get; set; }
 	public decimal Sueldo { get; set; }
-	public bool	Activo { get; set; }
+	public bool Activo { get; set; }
 
-	public List<Ventas>? Ventas { get; set; }
+	public List<Ventas> Ventas { get; set; } = new();
 }
+
 public class Clientes
 {
 	public int Id { get; set; }
 	public string? Cedula { get; set; }
 	public string? Nombre { get; set; }
-
 	public DateTime FechaNacimiento { get; set; }
-	public decimal Sueldo { get; set; }
 	public bool Activo { get; set; }
 
-	public List<Ventas>? Ventas { get; set; }
+	public List<Ventas> Ventas { get; set; } = new();
 }
+
 public class Vehiculos
 {
 	public int Id { get; set; }
 	public string? Marca { get; set; }
-
 	public DateTime Modelo { get; set; }
 	public decimal Valor { get; set; }
 	public bool Disponible { get; set; }
-	public int Seguro { get; set; }
-	public int Venta { get; set; }
-	public List<Seguros>? Seguros { get; set; }
-	public Ventas? _Venta { get; set; }
+
+	public List<Seguros> Seguros { get; set; } = new();
 }
+
 public class Ventas
 {
 	public int Id { get; set; }
-
 	public DateTime FechaVenta { get; set; }
-	public bool cancelado { get; set; }
-	public int Vehiculo { get; set; }
-	public int Empleado { get; set; }
+	public bool Cancelado { get; set; }
 
-	public Empleados? _Empleado { get; set; }
-	public List<Vehiculos>? _Vehiculos { get; set; }
+	public int VehiculoId { get; set; }   // FK
+	public int EmpleadoId { get; set; }   // FK
+	public int ClienteId { get; set; }    // FK
 
+	public Empleados? Empleado { get; set; }
+	public Vehiculos? Vehiculo { get; set; }
+	public Clientes? Cliente { get; set; }
 }
