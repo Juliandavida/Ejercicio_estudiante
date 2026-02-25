@@ -33,6 +33,12 @@ var lista_ventas = new List<Ventas>()
 	new Ventas{Id = 2,FechaVenta = DateTime.Now,Cancelado = true,ClienteId = 2,EmpleadoId = 1,VehiculoId = 3}
 };
 
+//muesto la venta uno con todos sus ATRIBUTOS
+
+var Nombre_Cliente = lista_ventas.FirstOrDefault(x => x.ClienteId == 1);
+var Nombre_Empleado = lista_ventas.FirstOrDefault(x => x.EmpleadoId == 1);
+var Nombre_modelo = lista_ventas.FirstOrDefault(x => x.VehiculoId == 1);
+
 
 
 //  CLASES 
@@ -46,12 +52,6 @@ public class Seguros
 	public int VehiculoId { get; set; }   // FK
 	public Vehiculos? Vehiculo { get; set; }
 }
-
-//muesto la venta uno con todos sus ATRIBUTOS
-
-	var Nombre_Cliente = lista_ventas.FirstOrDefault(x => x.ClienteId == 1);
-	var Nombre_Empleado = lista_ventas.FirstOrDefault(x => x.EmpleadoId == 1);
-	var Nombre_modelo = lista_ventas.FirstOrDefault(x => x.VehiculoId == 1);
 
 
 public class Empleados
