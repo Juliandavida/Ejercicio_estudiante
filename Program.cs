@@ -106,3 +106,85 @@ public class Ventas
 	public Clientes? Cliente { get; set; }
 }
 
+//otroooooooooooooooooooooooooooooooooooooooo
+Console.WriteLine("Hello, World!");
+
+//restaurante
+
+var lista_clientes = new List<Clientes>();
+lista_clientes.Add(new Clientes { Id = 1, Nombre = "Yohana", Cedula = "123", FechaNacimiento = new DateTime(2005 / 02 / 02), Estado = true });
+lista_clientes.Add(new Clientes { Id = 2, Nombre = "Susana", Cedula = "456", FechaNacimiento = new DateTime(1990 / 02 / 02), Estado = false });
+lista_clientes.Add(new Clientes { Id = 3, Nombre = "Laura",  Cedula = "789", FechaNacimiento = new DateTime(2003 / 02 / 02), Estado = true });
+
+var lista_ventas = new List<Ventas>();
+lista_ventas.Add(new Ventas() { Id = 1, Codigo = 0001, Descuento = 0.1m, Total = 19000.0m, cliente = 1, FechaVenta = new DateTime(2025 / 02 / 02) });
+lista_ventas.Add(new Ventas() { Id = 2, Codigo = 0002, Descuento = 0.2m, Total = 20000.0m, cliente = 1, FechaVenta = new DateTime(2026 / 02 / 02) });
+
+var lista_productos = new List<Productos>();
+lista_ventas.Add(new Ventas() { Id = 1, Codigo = 0001, Valor = 0.1m, Nombre = 19000.0m, FechaCreacion = new DateTime(2025 / 02 / 02), VAencido= true });
+lista_ventas.Add(new Ventas() { Id = 2, Codigo = 0002, Descuento = 0.2m, Total = 20000.0m, cliente = 1, FechaVenta = new DateTime(2026 / 02 / 02) });
+
+var lista_Ventas_Productos = new List<Ventas_Productos>();
+lista_ventas.Add(new Ventas() { Cantidad = 4, Valor = 100000.0m, Id = 1, Venta =1, Producto =2});
+lista_ventas.Add(new Ventas() { Cantidad = 20, Valor = 12000.0m, Id = 2, Venta =1, Producto =2});
+//factura calcular osea cuanto compro un cliente 
+
+
+//que clientes estan activos
+var Activos_clientes = lista_clientes.Count(x => x.Estado==true);
+
+Console.WriteLine("numero de clientes activos es: " + Activos_clientes);
+
+
+public class Calculos
+{
+
+}
+
+public class Clientes
+{
+	public int Id { get; set; }
+	public string? Nombre { get; set; }
+	public string? Cedula { get; set; }
+	public DateTime FechaNacimiento { get; set; }
+	public bool Estado { get; set; }
+
+	public List<Ventas> Ventas { get; set; }
+}
+
+public class Productos
+{
+	public int Id { get; set; }
+	public int Codigo { get; set; }
+	public decimal Valor { get; set; }
+	public string? Nombre { get; set; }
+	public DateTime FechaCreacion { get; set; }
+	public bool Vencimiento { get; set; }
+
+	public List<Ventas_Productos> Ventas_Productos { get; set; }
+}
+
+public class Ventas
+{
+	public int Id { get; set; }
+	public int Codigo { get; set; }
+	public decimal Descuento { get; set; }
+	public decimal Total { get; set; }
+	public int cliente { get; set; }
+	public DateTime FechaVenta { get; set; }
+	public List<Ventas_Productos> Ventas_Productos { get; set; }
+
+}
+
+public class Ventas_Productos
+{
+	public int Id { get; set; }
+	public int Cantidad { get; set; }
+	public decimal Valor { get; set; }
+	public int Venta { get; set; }
+	public int Producto { get; set; }
+
+	public Productos? _Productos { get; set; }
+	public Ventas? _Ventas { get; set; }
+}
+
